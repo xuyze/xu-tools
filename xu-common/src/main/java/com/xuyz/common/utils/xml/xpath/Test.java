@@ -25,11 +25,10 @@ import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.InputStream;
 
 /**
- * 〈一句话功能简述〉<br> 
+ * 〈一句话功能简述〉<br>
  * 〈xpath〉
  *
  * @author xuyz
@@ -62,7 +61,7 @@ public class Test {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         Document doc = null;
         try {
-            InputStream is = new ByteArrayInputStream(sXML.toString().getBytes("utf-8"));
+            InputStream is = new ByteArrayInputStream(sXML.toString().getBytes("UTF-8"));
             doc = dbf.newDocumentBuilder().parse(is);
             is.close();
         } catch (Exception e) {
@@ -78,13 +77,13 @@ public class Test {
     public String getNodeValue(Document document, String nodePath) {
         XPathFactory xPathFactory = XPathFactory.newInstance();
         XPath path = xPathFactory.newXPath();
-        String servInitrBrch = "";
+        String serverInitBranch = "";
         try {
-            servInitrBrch = path.evaluate(nodePath, document);
+            serverInitBranch = path.evaluate(nodePath, document);
         } catch (XPathExpressionException e) {
             e.printStackTrace();
         }
-        return servInitrBrch;
+        return serverInitBranch;
     }
 
     /**
@@ -164,7 +163,7 @@ public class Test {
         t.setNodeValue(doc, nodePath, nodeValue + "hello");
         System.out.println("修改后nodeValue：" + t.getNodeValue(doc, nodePath));
         long time1 = System.currentTimeMillis();
-        System.out.println("修改后的xml:"+t.xmlToString(doc));
-        System.out.println("耗时："+(time1-time));
+        System.out.println("修改后的xml:" + t.xmlToString(doc));
+        System.out.println("耗时：" + (time1 - time));
     }
 }
